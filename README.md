@@ -6,45 +6,39 @@ whatever purpose they require.
 
 This is an open source project sponsored by Infoblox.
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc/generate-toc again -->
+**Table of Contents**
+
+- [Dobby](#dobby)
+    - [Requirements](#requirements)
+    - [Building](#building)
+    - [Running](#running)
+    - [Clients](#clients)
+    - [Utility Functions](#utility-functions)
+        - [json import/export format](#json-importexport-format)
+    - [Origin of Name](#origin-of-name)
+
+<!-- markdown-toc end -->
+
+
 ## Requirements
 - Erlang R17+
 
 ## Building
-If you want to connect to the dobby Erlang shell using ssh with
-keys, you must
-generate keys for `deps/erl_sshd`.  Using make:
-```
-% make
-```
-Using rebar directly:
-```
-% rebar get-deps
-% rebar compile
-% deps/erl_sshd/make_keys
-% rebar generate
-```
-You may add your own public keys to the `authorized_keys` file in
-`priv/erl_sshd` (remember to `rebar generate` afterwards).
+At the beginning get rebar: `make rebar`.
 
-If you want to connect to the dobby Erlang shell using ssh with
-a username and password,
-add or modify the usernames and passwords
-to the `erl_sshd` section of `rel/files/sys.config`.
+To build the application call: `make`.
 
 ## Running
-```
-% rel/dobby/bin/dobby console
-```
 
-## Connecting via ssh
-If you genereated keys in erl_sshd before generating the dobby release,
-you can connect to the dobby server's Erlang shell using ssh.
-```
-ssh 127.0.0.1 -p 11133 -i id_rsa
-```
+To run `dobby` as an Erlang node use
+[dobby_allinone_node](https://github.com/ivanos/dobby_allinone_node).
+
+To run `dobby` straight away call `make dev`.
 
 ## Clients
-Use `dobby_clib` to send commands to the dobby server.
+Use [dobby_clib](https://github.com/ivanos/dobby_clib) to send commands
+to the dobby server.
 
 ## Utility Functions
 - dby_bulk:export(Format, Filename): writes the graph database to the
